@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Movies</h2>
+    <!-- name="movie" 决定请求参数名；value 则显示服务器传回的搜索词。 -->
+    <form action="/" method="get">
+        <label for="movie">Movie title</label>
+        <input id="movie" name="movie" type="text" value="{{ query }}">
+        <button type="submit">Search</button>
+        <a href="/">Show all films</a>
+    </form>
+
+    <!-- 学习演示：把 Flask 传给模板的 query 显示出来。 -->
+    <p>服务器读到的 query：<strong>「{{ query }}」</strong>（空白表示没有搜索词）</p>
+    <p>匹配电影数量：{{ films|length }}</p>
+    {% if not films %}
+        <p>No films found.</p>
+    {% endif %}
+    {% for film in films %}
+        <h3>{{ film["title"] }}</h3>
+        <!-- filename 是相对于 static 文件夹的路径。 -->
+        <img src="/static/{{ film['image'] }}"
+             alt="{{ film['alt'] }}" class="movie-poster">
+        <p>{{ film["minutes"] }} min</p>
+        <!-- 直接拼出路径，例如 /movies/nezha。 -->
+        <a href="/movies/{{ film['slug'] }}">View {{ film['title'] }}</a>
+    {% endfor %}
+{% endblock %}

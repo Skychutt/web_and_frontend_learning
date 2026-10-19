@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Night</title>
+    <!-- 直接写 CSS 的请求地址。 -->
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- 所有子模板共用的页头和导航。 -->
+    <header>
+        <h1>Movie Night</h1>
+    </header>
+    <nav>
+        <!-- 直接写路由地址。 -->
+        <a href="/">Film</a>
+        <a href="/viewing-notes">Notes</a>
+    </nav>
+    <main>
+        <!-- 预留位置：子模板通过同名 block 填入各自的内容。 -->
+        {% block content %}{% endblock %}
+    </main>
+    <!-- 修改这里，电影页和笔记页都会使用新页脚。 -->
+    <footer><p>Find your next film.</p></footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<!-- doctype：声明 HTML 文档，让浏览器使用标准模式。 -->
+<html lang="zh-CN">
+<!-- html：整个文档；lang：文档语言。 -->
+<head>
+    <!-- head：文档信息，通常不直接显示在页面正文中。 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML 主要标签演示</title>
+    <!-- title：浏览器标签页的标题，不是页面里的标题。 -->
+    <style>
+        /* CSS 只负责外观；可以删除整个 style，观察 HTML 的默认效果。 */
+        body { max-width: 850px; margin: 30px auto; padding: 0 20px; font-family: system-ui, sans-serif; line-height: 1.8; color: #243344; background: #faf5f6; }
+        header, section, aside, footer { background: white; padding: 20px; margin: 18px 0; border: 1px solid #dce3ec; border-radius: 10px; }
+        nav { display: flex; flex-wrap: wrap; gap: 20px; }
+        a { color: #155bbb; }
+        code { background: #edf2f8; padding: 2px 5px; border-radius: 4px; }
+        article { border-left: 4px solid #155bbb; padding-left: 16px; }
+        .highlight { color: #b04700; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #cbd5e1; padding: 8px; text-align: left; }
+        caption { font-weight: bold; }
+        label { display: block; margin-top: 12px; }
+        input, select, textarea, button { font: inherit; padding: 6px; max-width: 100%; box-sizing: border-box; }
+        textarea { display: block; width: 100%; }
+        button { margin-top: 14px; cursor: pointer; }
+        figure { margin: 16px 0; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <!-- body：所有可见的页面内容。 -->
+    <header>
+        <p><code>&lt;header&gt;</code> 页面介绍区域</p>
+        <h1>HTML 主要标签演示</h1>
+        <p><code>&lt;h1&gt;</code> 是一级标题；<code>&lt;p&gt;</code> 是段落。</p>
+        <p>边框、颜色和间距来自 CSS；标签本身描述内容的意义。</p>
+    </header>
+
+    <!-- nav：主要导航；a：链接；href="#text"：跳到 id="text" 的元素。 -->
+    <nav aria-label="示例导航">
+        <a href="#text">文字标签</a>
+        <a href="#lists">列表</a>
+        <a href="#picture">图片</a>
+        <a href="#table">表格</a>
+        <a href="#form">表单</a>
+    </nav>
+
+    <!-- main：页面主要内容；section：一个主题；article：独立内容项。 -->
+    <main>
+        <section id="text">
+            <h2>1. 文字与分组</h2>
+            <p><code>&lt;section&gt;</code> 把同一主题的内容放在一起；<code>&lt;h2&gt;</code> 是二级标题。</p>
+            <article>
+                <h3>电影卡片：哪吒</h3>
+                <p><code>&lt;article&gt;</code> 表示独立内容项；<code>&lt;h3&gt;</code> 是这里的三级标题。</p>
+                <p><strong>这段文字很重要：strong</strong>；<em>这段文字需要强调：em</em>。</p>
+                <div>
+                    <p><code>&lt;div&gt;</code> 是通用分组容器，没有特定语义。</p>
+                    <p>时长：<span class="highlight">110 分钟</span>。<code>&lt;span&gt;</code> 只标记一小段内容，此处用 CSS 改变颜色。</p>
+                </div>
+                <p>第一行<br>第二行：<code>&lt;br&gt;</code> 在段落内部换行。</p>
+                <hr>
+                <p><code>&lt;hr&gt;</code> 表示主题分隔，浏览器通常显示为横线。</p>
+            </article>
+        </section>
+
+        <section id="lists">
+            <h2>2. 列表</h2>
+            <p><code>&lt;ul&gt;</code> 无序列表；每一项使用 <code>&lt;li&gt;</code>：</p>
+            <ul><li>哪吒</li><li>你好，李焕英</li></ul>
+            <p><code>&lt;ol&gt;</code> 有序列表，浏览器自动添加编号：</p>
+            <ol><li>选择电影</li><li>观看电影</li><li>写观影笔记</li></ol>
+            <p><code>&lt;dl&gt;</code> 名称与说明列表；<code>&lt;dt&gt;</code> 名称，<code>&lt;dd&gt;</code> 说明：</p>
+            <dl><dt>HTML</dt><dd>描述网页内容和结构。</dd><dt>CSS</dt><dd>设置网页外观和布局。</dd></dl>
+        </section>
+
+        <section id="picture">
+            <h2>3. 图片与说明</h2>
+            <!-- 内嵌示例图片，不需要网络或额外文件。 -->
+            <figure>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='160'%3E%3Crect width='360' height='160' fill='%23dbeafe'/%3E%3Ccircle cx='180' cy='70' r='38' fill='%23155bbb'/%3E%3Ctext x='180' y='138' text-anchor='middle' font-size='20' fill='%23243344'%3EHTML image example%3C/text%3E%3C/svg%3E" alt="浅蓝色背景上的蓝色圆形示例图" width="360" height="160">
+                <figcaption>这是 <code>&lt;figcaption&gt;</code>：图片的可见说明。</figcaption>
+            </figure>
+            <p><code>&lt;figure&gt;</code> 将图片与说明分组；<code>&lt;img&gt;</code> 显示图片，src 指定来源，alt 提供文字描述。img 没有结束标签。</p>
+        </section>
+
+        <section id="table">
+            <h2>4. 表格</h2>
+            <table>
+                <caption>电影时长：caption 是表格标题</caption>
+                <thead><tr><th scope="col">电影</th><th scope="col">分钟</th></tr></thead>
+                <tbody><tr><th scope="row">哪吒</th><td>110</td></tr><tr><th scope="row">你好，李焕英</th><td>128</td></tr></tbody>
+            </table>
+            <p><code>table</code> 表格；<code>thead</code> 表头区域；<code>tbody</code> 数据区域；<code>tr</code> 行；<code>th</code> 表头单元格；<code>td</code> 数据单元格。</p>
+        </section>
+
+        <section id="form">
+            <h2>5. 表单：可以实际操作</h2>
+            <p><code>form</code> 收集输入；<code>label</code> 给控件命名；<code>input</code> 输入框；<code>select</code> 下拉菜单；<code>textarea</code> 多行输入。</p>
+            <!-- action="#form"：GET 提交到当前页面，并返回表单位置。 -->
+            <form action="#form" method="get">
+                <label for="username">姓名（必填，label 的 for 对应 input 的 id）</label>
+                <input id="username" name="username" type="text" placeholder="请输入姓名" required>
+                <label for="movie">电影</label>
+                <select id="movie" name="movie"><option value="nezha">哪吒</option><option value="hi-mom">你好，李焕英</option></select>
+                <fieldset>
+                    <legend>观看状态：fieldset 分组，legend 给组命名</legend>
+                    <label><input type="radio" name="status" value="want" checked> 想看</label>
+                    <label><input type="radio" name="status" value="watched"> 看过</label>
+                </fieldset>
+                <label><input type="checkbox" name="recommend" value="yes"> 推荐给朋友</label>
+                <label for="notes">观影笔记</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="写一点感想"></textarea>
+                <button type="submit">提交：观察地址栏中的参数</button>
+                <button type="reset">重置输入</button>
+            </form>
+            <p>提交时，<code>name</code> 成为参数名。GET 会把输入放入地址栏，例如 <code>?username=小明&amp;movie=nezha</code>。本示例只展示提交机制，不保存数据。</p>
+        </section>
+    </main>
+    <aside><strong>aside：补充提示</strong><p>点击导航可以跳转到各节；点击“姓名”标签可以聚焦输入框；留空姓名并提交，浏览器会提示填写。</p></aside>
+    <footer><p><code>&lt;footer&gt;</code> 页面结尾信息。学习 HTML 时，可以同时对照源码和浏览器显示效果。</p></footer>
+</body>
+</html>

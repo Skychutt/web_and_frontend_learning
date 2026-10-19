@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ film["title"] }}</h2>
+    <img src="/static/{{ film['image'] }}"
+         alt="{{ film['alt'] }}" class="movie-poster">
+    <p>{{ film["minutes"] }} min</p>
+    <p>URL slug: <code>{{ film["slug"] }}</code></p>
+    <a href="/">Back to all films</a>
+{% endblock %}
