@@ -2,6 +2,11 @@
 
 {% block content %}
     <h2>Movies</h2>
+    <section aria-labelledby="js-lesson-title">
+        <h3 id="js-lesson-title">JavaScript 第 1 课</h3>
+        <p id="js-message">这句话来自 HTML，JavaScript 还没有修改它。</p>
+        <p>打开浏览器开发者工具的 Console，可以看到 learn.js 输出的文字和数字。</p>
+    </section>
     <!-- name="movie" 决定请求参数名；value 则显示服务器传回的搜索词。 -->
     <form action="/" method="get">
         <label for="movie">Movie title</label>
@@ -25,4 +30,6 @@
         <!-- 直接拼出路径，例如 /movies/nezha。 -->
         <a href="/movies/{{ film['slug'] }}">View {{ film['title'] }}</a>
     {% endfor %}
+    <!-- defer：先读完 HTML，再执行这个外部 JS 文件。 -->
+    <script src="/static/learn.js" defer></script>
 {% endblock %}
