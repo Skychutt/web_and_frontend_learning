@@ -6,5 +6,22 @@
          alt="{{ film['alt'] }}" class="movie-poster">
     <p>{{ film["minutes"] }} min</p>
     <p>URL slug: <code>{{ film["slug"] }}</code></p>
+    <h3>给电影评分（POST 演示）</h3>
+    <!-- 提交到当前电影详情地址，评分放进请求体。 -->
+    <form action="/movies/{{ film['slug'] }}" method="post">
+        <label for="rating">你的评分（1 到 10 的整数）</label>
+        <input id="rating" name="rating" type="number"
+               min="1" max="10" step="1" required value="{{ raw_rating }}">
+        <button type="submit">提交评分</button>
+    </form>
+
+    {% if error %}
+        <p role="alert">{{ error }}</p>
+    {% endif %}
+    {% if rating is not none %}
+        <p role="status">收到你对 {{ film['title'] }} 的评分：{{ rating }} / 10。</p>
+        <p>Flask 先通过 request.form 读到字符串「{{ raw_rating }}」，再用 int() 转成整数。</p>
+    {% endif %}
+    <p>本例只接收并显示评分，暂不保存；重新打开页面后评分会清空。</p>
     <a href="/">Back to all films</a>
 {% endblock %}

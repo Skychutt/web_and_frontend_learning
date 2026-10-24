@@ -32,11 +32,33 @@ def index():
 
 # <slug> 捕获 URL 中这一段文字，传给下面函数的 slug 参数。
 # 例如 /movies/hi-mom 会调用 movie(slug="hi-mom")。
-@app.route("/movies/<slug>")
+@app.route("/movies/<slug>", methods=["GET", "POST"])
 def movie(slug):
     for film in FILMS:
         if film["slug"] == slug:
-            return render_template("movie-detail.html", film=film)
+            raw_rating = ""
+            rating = None
+            error = ""
+
+            # GET 显示页面；POST 读取表单请求体中的 rating 字段。
+            if request.method == "POST":
+                raw_rating = request.form.get("rating", "").strip()
+                # 即使 HTML 使用 type="number"，这里读到的仍然是字符串。
+                try:
+                    rating = int(raw_rating)
+                except ValueError:
+                    error = "请输入 1 到 10 的整数评分。"
+                else:
+                    if not 1 <= rating <= 10:
+                        error = "评分必须在 1 到 10 之间。"
+                if error:
+                    rating = None
+
+            # 本节先演示读取、检查和显示，尚未保存到数据库。
+            return render_template(
+                "movie-detail.html", film=film,
+                raw_rating=raw_rating, rating=rating, error=error
+            )
     # 没有对应的电影，返回 404 Not Found。
     abort(404)
 
